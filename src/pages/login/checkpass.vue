@@ -4,17 +4,21 @@
             <div class="ms-title">{{'backMantSys'}}</div>
             <el-form ref="ruleForms" :model="ruleForm" status-icon :rules="rules" label-width="0"
                 class="ms-content">
-                <el-form-item prop="account">
-                    <el-input v-model="ruleForm.account" type="text" autocomplete="off" :placeholder="t('p_act')">
+                <el-form-item prop="age">
+                    <el-input v-model.number="ruleForm.age" type="password" autocomplete="off">
                         <template #prepend><el-icon><user /></el-icon></template>
                     </el-input>
                 </el-form-item>
-                <el-form-item prop="password">
-                    <el-input v-model="ruleForm.password" type="password" autocomplete="off" :placeholder="t('p_pwd')">
+                <el-form-item prop="pass">
+                    <el-input v-model="ruleForm.pass" type="password" autocomplete="off">
                         <template #prepend><el-icon><lock /></el-icon></template>
                     </el-input>
                 </el-form-item>
-                <lang-tool/>
+                <el-form-item prop="checkPass">
+                    <el-input v-model="ruleForm.checkPass">
+                        <template #prepend><el-icon><lock /></el-icon></template>
+                    </el-input>
+                </el-form-item>
                 <div class="login-btn">
                     <el-button type="primary" @click="submitForm()">{{t('login')}}</el-button>
                 </div>
@@ -24,27 +28,85 @@
 </template>
 
 <script setup lang="ts">
-    import t from '@/util/remake/tlang';
+    import { useI18n } from "vue-i18n";
+    const { t } = useI18n();
 
     import { reactive, onMounted, ref, Ref } from "vue";
     import type { ElForm } from 'element-plus'
     import { User, Lock} from '@element-plus/icons'
+
     type ElFormInstance = InstanceType<typeof ElForm>
+
     interface Icallback {
         (message?: string | Error | undefined): Error | void
     }
+
     interface Ivalidate {
         (rule: object, value: number|string, callback: Icallback): void
     }
+
     let ruleForm = reactive({
-        account: 'chatadmin',
-        password: '#123456',
+        pass: '',
+        checkPass: '',
+        age: '',
     })
     const ruleForms = ref<ElFormInstance>()
-    let rules = {
-        account: [{ required: true, message: t('p_act'),  trigger: 'blur' }],
-        password: [{ required: true, message: t('p_pwd'), trigger: 'blur' }],
+
+    const checkAge: Ivalidate = (rule, value, callback) => {
+        if (value === "") {
+            return callback(new Error('Please input the age'))
+        }
+        if (!Number.isInteger(value)) {
+            callback(new Error('Please input digits'))
+        } else {
+            if (value < 18) {
+                callback(new Error('Age must be greater than 18'))
+            } else {
+                callback()
+            }
+        }
+    };
+    
+    const validatePass: Ivalidate = (rule, value, callback) => {
+        if (value === '') {
+            callback(new Error('Please input the password'))
+        } else {
+            if (ruleForm.checkPass !== '') {
+                ruleForms?.value?.validateField('checkPass',()=>{})
+            }
+            callback()
+        }
     }
+    const validatePass2: Ivalidate = (rule, value, callback) => {
+        if (value === '') {
+            callback(new Error('Please input the password again'))
+        } else if (value !== ruleForm.pass) {
+            callback(new Error("Two inputs don't match!"))
+        } else {
+            callback()
+        }
+    }
+    let rules = {
+        pass: [
+            {
+                validator: validatePass,
+                trigger: 'blur'
+            }
+        ],
+        checkPass: [
+            {
+                validator: validatePass2,
+                trigger: 'blur'
+            }
+        ],
+        age: [
+            {
+                validator: checkAge,
+                trigger: 'blur'
+            }
+        ],
+    }
+
     let submitForm = () => {
       ruleForms?.value?.validate((valid) => {
         if (valid) {
@@ -55,8 +117,9 @@
         }
       })
     }
-    import langTool from '@/components/lang/index.vue'
-    
+    let resetForm = () => {
+      ruleForms?.value?.resetFields()
+    }
 
     
 
@@ -98,7 +161,6 @@
 
     .login-btn {
         text-align: center;
-        margin-top: 20px;
     }
 
     .login-btn button {

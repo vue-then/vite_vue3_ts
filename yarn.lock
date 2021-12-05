@@ -238,6 +238,11 @@
   resolved "https://registry.npmmirror.com/@types/json-schema/download/@types/json-schema-7.0.9.tgz#97edc9037ea0c38585320b28964dde3b39e4660d"
   integrity sha1-l+3JA36gw4WFMgsolk3eOznkZg0=
 
+"@types/lockr@^0.8.7":
+  version "0.8.7"
+  resolved "https://registry.yarnpkg.com/@types/lockr/-/lockr-0.8.7.tgz#da6bbf92dee178b368855908cd27a1b2cc630a95"
+  integrity sha512-0z6Fohv2tkcUj20Ig17LzhWjEAWKwOWWCRL3dSpzOTGPwTHuLPs8JHF44iwUSGcRafd/cmSUJaBfhFJ1i06prA==
+
 "@types/lodash-es@^4.17.4":
   version "4.17.5"
   resolved "https://registry.npmmirror.com/@types/lodash-es/download/@types/lodash-es-4.17.5.tgz#1c3fdd16849d84aea43890b1c60da379fb501353"
@@ -2421,6 +2426,11 @@ locate-path@^5.0.0:
   integrity sha1-Gvujlq/WdqbUJQTQpno6frn2KqA=
   dependencies:
     p-locate "^4.1.0"
+
+lockr@^0.8.5:
+  version "0.8.5"
+  resolved "https://registry.yarnpkg.com/lockr/-/lockr-0.8.5.tgz#ed021978dadc87afe8c8ec8bd50fce15f5a3d84e"
+  integrity sha512-PyWX+NYcJtk+12cARV5qaR0I2cfpHDplpOOI4KKoJtJufdnXo4sJPmfWhbZUAT5rCMgszzU0DovlSjEKp2u12A==
 
 lodash-es@^4.17.21:
   version "4.17.21"

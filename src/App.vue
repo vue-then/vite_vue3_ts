@@ -7,27 +7,25 @@
 </template>
 
 <script setup lang="ts">
-import { defineComponent,ref } from 'vue'
-defineComponent({
-    name: 'App',
-    setup(){
-    }
-})
+import { ref } from 'vue'
 import zhCn from 'element-plus/lib/locale/lang/zh-cn'
 import en from 'element-plus/lib/locale/lang/en'
-import { Language } from 'element-plus/es/locale'
-import i18n from './i18n'
-import { useI18n } from 'vue-i18n'
-let { locale } = useI18n()
+import { getLocal } from './util/common'
 
-//let locale:Language = zhCn
-let locales:Language = zhCn
+let locales = ref(zhCn)
+let local = getLocal()
+switch (local){
+    case 'zh':
+        locales.value = zhCn
+        break;
+    case 'en':
+        locales.value = en
+        break;
+    default:
+        locales.value = zhCn
+        break;
+}
 
-
-
-setTimeout(() => {
-    locale.value = 'en' 
-},1000)
 
 </script>
 

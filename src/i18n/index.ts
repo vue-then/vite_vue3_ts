@@ -1,4 +1,6 @@
+import { getLocal } from '@/util/common'
 import { createI18n } from 'vue-i18n'
+
 //import elementEnLocale from 'element-plus/lib/locale/lang/en'
 //import elementZhLocale from 'element-plus/lib/locale/lang/zh-cn'
 //// 导入自定义语言包
@@ -59,8 +61,9 @@ console.log(getLangAll(),'getAllLang')
 //注册i8n实例并引入语言文件
 const i18n = createI18n({
     legacy: false,
-    locale: 'zh',
-    messages: getLangAll()
+    locale: getLocal(),
+    fallbackLocale: getLocal(),
+    messages: getLangAll(),
 })
 
 export default i18n
