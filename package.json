@@ -11,6 +11,7 @@
         "prepare": "husky install"
     },
     "dependencies": {
+        "@element-plus/icons": "^0.0.11",
         "axios": "^0.24.0",
         "element-plus": "^1.2.0-beta.5",
         "naive-ui": "^2.21.2",
@@ -18,11 +19,12 @@
         "pinia": "^2.0.0-rc.10",
         "vfonts": "^0.1.0",
         "vue": "^3.2.2",
+        "vue-i18n": "^9.2.0-beta.23",
         "vue-router": "4"
     },
     "devDependencies": {
         "@babel/types": "^7.16.0",
-        "@types/node": "^16.11.10",
+        "@types/node": "^16.11.11",
         "@types/nprogress": "^0.2.0",
         "@typescript-eslint/eslint-plugin": "^5.4.0",
         "@typescript-eslint/parser": "^5.4.0",
