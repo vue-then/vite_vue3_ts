@@ -41,22 +41,22 @@ deactivated   -> onDeactivated
 
 > Vite：下一代前端开发与构建工具
 
-- 💡 极速的开发服务器启动
-- ⚡️ 轻量快速的热模块重载（HMR）
-- 🛠️ 丰富的功能
-- 📦 自带优化的构建
-- 🔩 通用的插件接口
-- 🔑 完全类型化的 API
+-   💡 极速的开发服务器启动
+-   ⚡️ 轻量快速的热模块重载（HMR）
+-   🛠️ 丰富的功能
+-   📦 自带优化的构建
+-   🔩 通用的插件接口
+-   🔑 完全类型化的 API
 
 `Vite` （法语意为 “迅速”，发音 /vit/）是一种全新的前端构建工具，它极大地改善了前端开发体验。
 
 它主要由两部分组成：
 
-- 一个开发服务器，它基于 原生 `ES` 模块 提供了 丰富的内建功能，如速度快到惊人的 模块热更新（HMR）。
+-   一个开发服务器，它基于 原生 `ES` 模块 提供了 丰富的内建功能，如速度快到惊人的 模块热更新（HMR）。
 
-- 一套构建指令，它使用 `Rollup` 打包你的代码，并且它是预配置的，可以输出用于生产环境的优化过的静态资源。
+-   一套构建指令，它使用 `Rollup` 打包你的代码，并且它是预配置的，可以输出用于生产环境的优化过的静态资源。
 
-- Vite 意在提供开箱即用的配置，同时它的 插件 API 和 JavaScript API 带来了高度的`可扩展性`，并有完整的类型支持。
+-   Vite 意在提供开箱即用的配置，同时它的 插件 API 和 JavaScript API 带来了高度的`可扩展性`，并有完整的类型支持。
 
 ## 使用 vite 快速创建脚手架
 
@@ -133,162 +133,161 @@ yarn config set ignore-engines true
 
 ```js
 module.exports = {
-  root: true,
-  env: {
-    browser: true,
-    node: true,
-    es2021: true,
-  },
-  parser: 'vue-eslint-parser',
-  extends: [
-    'eslint:recommended',
-    'plugin:vue/vue3-recommended',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:prettier/recommended',
-    // eslint-config-prettier 的缩写
-    'prettier',
-  ],
-  parserOptions: {
-    ecmaVersion: 12,
-    parser: '@typescript-eslint/parser',
-    sourceType: 'module',
-    ecmaFeatures: {
-      jsx: true,
+    root: true,
+    env: {
+        browser: true,
+        node: true,
+        es2021: true,
     },
-  },
-  // eslint-plugin-vue @typescript-eslint/eslint-plugin eslint-plugin-prettier的缩写
-  plugins: ['vue', '@typescript-eslint', 'prettier'],
-  rules: {
-    '@typescript-eslint/ban-ts-ignore': 'off',
-    '@typescript-eslint/no-unused-vars': 'off',
-    '@typescript-eslint/explicit-function-return-type': 'off',
-    '@typescript-eslint/no-explicit-any': 'off',
-    '@typescript-eslint/no-var-requires': 'off',
-    '@typescript-eslint/no-empty-function': 'off',
-    '@typescript-eslint/no-use-before-define': 'off',
-    '@typescript-eslint/ban-ts-comment': 'off',
-    '@typescript-eslint/ban-types': 'off',
-    '@typescript-eslint/no-non-null-assertion': 'off',
-    '@typescript-eslint/explicit-module-boundary-types': 'off',
-    'no-var': 'error',
-    'prettier/prettier': 'error',
-    // 禁止出现console
-    'no-console': 'warn',
-    // 禁用debugger
-    'no-debugger': 'warn',
-    // 禁止出现重复的 case 标签
-    'no-duplicate-case': 'warn',
-    // 禁止出现空语句块
-    'no-empty': 'warn',
-    // 禁止不必要的括号
-    'no-extra-parens': 'off',
-    // 禁止对 function 声明重新赋值
-    'no-func-assign': 'warn',
-    // 禁止在 return、throw、continue 和 break 语句之后出现不可达代码
-    'no-unreachable': 'warn',
-    // 强制所有控制语句使用一致的括号风格
-    curly: 'warn',
-    // 要求 switch 语句中有 default 分支
-    'default-case': 'warn',
-    // 强制尽可能地使用点号
-    'dot-notation': 'warn',
-    // 要求使用 === 和 !==
-    eqeqeq: 'warn',
-    // 禁止 if 语句中 return 语句之后有 else 块
-    'no-else-return': 'warn',
-    // 禁止出现空函数
-    'no-empty-function': 'warn',
-    // 禁用不必要的嵌套块
-    'no-lone-blocks': 'warn',
-    // 禁止使用多个空格
-    'no-multi-spaces': 'warn',
-    // 禁止多次声明同一变量
-    'no-redeclare': 'warn',
-    // 禁止在 return 语句中使用赋值语句
-    'no-return-assign': 'warn',
-    // 禁用不必要的 return await
-    'no-return-await': 'warn',
-    // 禁止自我赋值
-    'no-self-assign': 'warn',
-    // 禁止自身比较
-    'no-self-compare': 'warn',
-    // 禁止不必要的 catch 子句
-    'no-useless-catch': 'warn',
-    // 禁止多余的 return 语句
-    'no-useless-return': 'warn',
-    // 禁止变量声明与外层作用域的变量同名
-    'no-shadow': 'off',
-    // 允许delete变量
-    'no-delete-var': 'off',
-    // 强制数组方括号中使用一致的空格
-    'array-bracket-spacing': 'warn',
-    // 强制在代码块中使用一致的大括号风格
-    'brace-style': 'warn',
-    // 强制使用骆驼拼写法命名约定
-    camelcase: 'warn',
-    // 强制使用一致的缩进
-    indent: 'off',
-    // 强制在 JSX 属性中一致地使用双引号或单引号
-    // 'jsx-quotes': 'warn',
-    // 强制可嵌套的块的最大深度4
-    'max-depth': 'warn',
-    // 强制最大行数 300
-    // "max-lines": ["warn", { "max": 1200 }],
-    // 强制函数最大代码行数 50
-    // 'max-lines-per-function': ['warn', { max: 70 }],
-    // 强制函数块最多允许的的语句数量20
-    'max-statements': ['warn', 100],
-    // 强制回调函数最大嵌套深度
-    'max-nested-callbacks': ['warn', 3],
-    // 强制函数定义中最多允许的参数数量
-    'max-params': ['warn', 3],
-    // 强制每一行中所允许的最大语句数量
-    'max-statements-per-line': ['warn', { max: 1 }],
-    // 要求方法链中每个调用都有一个换行符
-    'newline-per-chained-call': ['warn', { ignoreChainWithDepth: 3 }],
-    // 禁止 if 作为唯一的语句出现在 else 语句中
-    'no-lonely-if': 'warn',
-    // 禁止空格和 tab 的混合缩进
-    'no-mixed-spaces-and-tabs': 'warn',
-    // 禁止出现多行空行
-    'no-multiple-empty-lines': 'warn',
-    // 禁止出现;
-    semi: ['warn', 'never'],
-    // 强制在块之前使用一致的空格
-    'space-before-blocks': 'warn',
-    // 强制在 function的左括号之前使用一致的空格
-    // 'space-before-function-paren': ['warn', 'never'],
-    // 强制在圆括号内使用一致的空格
-    'space-in-parens': 'warn',
-    // 要求操作符周围有空格
-    'space-infix-ops': 'warn',
-    // 强制在一元操作符前后使用一致的空格
-    'space-unary-ops': 'warn',
-    // 强制在注释中 // 或 /* 使用一致的空格
-    // "spaced-comment": "warn",
-    // 强制在 switch 的冒号左右有空格
-    'switch-colon-spacing': 'warn',
-    // 强制箭头函数的箭头前后使用一致的空格
-    'arrow-spacing': 'warn',
-    'no-var': 'warn',
-    'prefer-const': 'warn',
-    'prefer-rest-params': 'warn',
-    'no-useless-escape': 'warn',
-    'no-irregular-whitespace': 'warn',
-    'no-prototype-builtins': 'warn',
-    'no-fallthrough': 'warn',
-    'no-extra-boolean-cast': 'warn',
-    'no-case-declarations': 'warn',
-    'no-async-promise-executor': 'warn',
-  },
-  globals: {
-    defineProps: 'readonly',
-    defineEmits: 'readonly',
-    defineExpose: 'readonly',
-    withDefaults: 'readonly',
-  },
+    parser: 'vue-eslint-parser',
+    extends: [
+        'eslint:recommended',
+        'plugin:vue/vue3-recommended',
+        'plugin:@typescript-eslint/recommended',
+        'plugin:prettier/recommended',
+        // eslint-config-prettier 的缩写
+        'prettier',
+    ],
+    parserOptions: {
+        ecmaVersion: 12,
+        parser: '@typescript-eslint/parser',
+        sourceType: 'module',
+        ecmaFeatures: {
+            jsx: true,
+        },
+    },
+    // eslint-plugin-vue @typescript-eslint/eslint-plugin eslint-plugin-prettier的缩写
+    plugins: ['vue', '@typescript-eslint', 'prettier'],
+    rules: {
+        '@typescript-eslint/ban-ts-ignore': 'off',
+        '@typescript-eslint/no-unused-vars': 'off',
+        '@typescript-eslint/explicit-function-return-type': 'off',
+        '@typescript-eslint/no-explicit-any': 'off',
+        '@typescript-eslint/no-var-requires': 'off',
+        '@typescript-eslint/no-empty-function': 'off',
+        '@typescript-eslint/no-use-before-define': 'off',
+        '@typescript-eslint/ban-ts-comment': 'off',
+        '@typescript-eslint/ban-types': 'off',
+        '@typescript-eslint/no-non-null-assertion': 'off',
+        '@typescript-eslint/explicit-module-boundary-types': 'off',
+        'no-var': 'error',
+        'prettier/prettier': 'error',
+        // 禁止出现console
+        'no-console': 'warn',
+        // 禁用debugger
+        'no-debugger': 'warn',
+        // 禁止出现重复的 case 标签
+        'no-duplicate-case': 'warn',
+        // 禁止出现空语句块
+        'no-empty': 'warn',
+        // 禁止不必要的括号
+        'no-extra-parens': 'off',
+        // 禁止对 function 声明重新赋值
+        'no-func-assign': 'warn',
+        // 禁止在 return、throw、continue 和 break 语句之后出现不可达代码
+        'no-unreachable': 'warn',
+        // 强制所有控制语句使用一致的括号风格
+        curly: 'warn',
+        // 要求 switch 语句中有 default 分支
+        'default-case': 'warn',
+        // 强制尽可能地使用点号
+        'dot-notation': 'warn',
+        // 要求使用 === 和 !==
+        eqeqeq: 'warn',
+        // 禁止 if 语句中 return 语句之后有 else 块
+        'no-else-return': 'warn',
+        // 禁止出现空函数
+        'no-empty-function': 'warn',
+        // 禁用不必要的嵌套块
+        'no-lone-blocks': 'warn',
+        // 禁止使用多个空格
+        'no-multi-spaces': 'warn',
+        // 禁止多次声明同一变量
+        'no-redeclare': 'warn',
+        // 禁止在 return 语句中使用赋值语句
+        'no-return-assign': 'warn',
+        // 禁用不必要的 return await
+        'no-return-await': 'warn',
+        // 禁止自我赋值
+        'no-self-assign': 'warn',
+        // 禁止自身比较
+        'no-self-compare': 'warn',
+        // 禁止不必要的 catch 子句
+        'no-useless-catch': 'warn',
+        // 禁止多余的 return 语句
+        'no-useless-return': 'warn',
+        // 禁止变量声明与外层作用域的变量同名
+        'no-shadow': 'off',
+        // 允许delete变量
+        'no-delete-var': 'off',
+        // 强制数组方括号中使用一致的空格
+        'array-bracket-spacing': 'warn',
+        // 强制在代码块中使用一致的大括号风格
+        'brace-style': 'warn',
+        // 强制使用骆驼拼写法命名约定
+        camelcase: 'warn',
+        // 强制使用一致的缩进
+        indent: 'off',
+        // 强制在 JSX 属性中一致地使用双引号或单引号
+        // 'jsx-quotes': 'warn',
+        // 强制可嵌套的块的最大深度4
+        'max-depth': 'warn',
+        // 强制最大行数 300
+        // "max-lines": ["warn", { "max": 1200 }],
+        // 强制函数最大代码行数 50
+        // 'max-lines-per-function': ['warn', { max: 70 }],
+        // 强制函数块最多允许的的语句数量20
+        'max-statements': ['warn', 100],
+        // 强制回调函数最大嵌套深度
+        'max-nested-callbacks': ['warn', 3],
+        // 强制函数定义中最多允许的参数数量
+        'max-params': ['warn', 3],
+        // 强制每一行中所允许的最大语句数量
+        'max-statements-per-line': ['warn', { max: 1 }],
+        // 要求方法链中每个调用都有一个换行符
+        'newline-per-chained-call': ['warn', { ignoreChainWithDepth: 3 }],
+        // 禁止 if 作为唯一的语句出现在 else 语句中
+        'no-lonely-if': 'warn',
+        // 禁止空格和 tab 的混合缩进
+        'no-mixed-spaces-and-tabs': 'warn',
+        // 禁止出现多行空行
+        'no-multiple-empty-lines': 'warn',
+        // 禁止出现;
+        semi: ['warn', 'never'],
+        // 强制在块之前使用一致的空格
+        'space-before-blocks': 'warn',
+        // 强制在 function的左括号之前使用一致的空格
+        // 'space-before-function-paren': ['warn', 'never'],
+        // 强制在圆括号内使用一致的空格
+        'space-in-parens': 'warn',
+        // 要求操作符周围有空格
+        'space-infix-ops': 'warn',
+        // 强制在一元操作符前后使用一致的空格
+        'space-unary-ops': 'warn',
+        // 强制在注释中 // 或 /* 使用一致的空格
+        // "spaced-comment": "warn",
+        // 强制在 switch 的冒号左右有空格
+        'switch-colon-spacing': 'warn',
+        // 强制箭头函数的箭头前后使用一致的空格
+        'arrow-spacing': 'warn',
+        'no-var': 'warn',
+        'prefer-const': 'warn',
+        'prefer-rest-params': 'warn',
+        'no-useless-escape': 'warn',
+        'no-irregular-whitespace': 'warn',
+        'no-prototype-builtins': 'warn',
+        'no-fallthrough': 'warn',
+        'no-extra-boolean-cast': 'warn',
+        'no-case-declarations': 'warn',
+        'no-async-promise-executor': 'warn',
+    },
+    globals: {
+        defineProps: 'readonly',
+        defineEmits: 'readonly',
+        defineExpose: 'readonly',
+        withDefaults: 'readonly',
+    },
 }
-
 ```
 
 ### 项目下新建 .eslintignore
@@ -321,21 +320,21 @@ yarn add eslint-config-prettier --dev
 
 ```js
 module.exports = {
-  tabWidth: 2,
-  jsxSingleQuote: true,
-  jsxBracketSameLine: true,
-  printWidth: 100,
-  singleQuote: true,
-  semi: false,
-  overrides: [
-    {
-      files: '*.json',
-      options: {
-        printWidth: 200,
-      },
-    },
-  ],
-  arrowParens: 'always',
+    tabWidth: 2,
+    jsxSingleQuote: true,
+    jsxBracketSameLine: true,
+    printWidth: 100,
+    singleQuote: true,
+    semi: false,
+    overrides: [
+        {
+            files: '*.json',
+            options: {
+                printWidth: 200,
+            },
+        },
+    ],
+    arrowParens: 'always',
 }
 ```
 
@@ -351,10 +350,10 @@ dist
 
 ```json
 {
-  "script": {
-    "lint": "eslint src --fix --ext .ts,.tsx,.vue,.js,.jsx",
-    "prettier": "prettier --write ."
-  }
+    "script": {
+        "lint": "eslint src --fix --ext .ts,.tsx,.vue,.js,.jsx",
+        "prettier": "prettier --write ."
+    }
 }
 ```
 
@@ -441,12 +440,12 @@ import path from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue()],
-  resolve: {
-    alias: {
-      '@': path.resolve(__dirname, 'src'),
+    plugins: [vue()],
+    resolve: {
+        alias: {
+            '@': path.resolve(__dirname, 'src'),
+        },
     },
-  },
 })
 ```
 
@@ -454,24 +453,23 @@ export default defineConfig({
 
 ```json
 {
-  "compilerOptions": {
-    "target": "esnext",
-    "module": "esnext",
-    "moduleResolution": "node",
-    "strict": true,
-    "jsx": "preserve",
-    "sourceMap": true,
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "lib": ["esnext", "dom"],
-    "baseUrl": ".",
-    "paths": {
-      "@/*":["src/*"]
-    }
-  },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"]
+    "compilerOptions": {
+        "target": "esnext",
+        "module": "esnext",
+        "moduleResolution": "node",
+        "strict": true,
+        "jsx": "preserve",
+        "sourceMap": true,
+        "resolveJsonModule": true,
+        "esModuleInterop": true,
+        "lib": ["esnext", "dom"],
+        "baseUrl": ".",
+        "paths": {
+            "@/*": ["src/*"]
+        }
+    },
+    "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"]
 }
-
 ```
 
 ## 配置 css 预处理器 scss
@@ -513,10 +511,11 @@ css:{
 > 不需要任何引入可以直接使用全局`scss`定义的变量
 
 ```scss
-.test{
-  color: $test-color;
+.test {
+    color: $test-color;
 }
 ```
+
 ## 路由
 
 ```bash
@@ -530,20 +529,19 @@ yarn add vue-router@4
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 
 const routes: RouteRecordRaw[] = [
-  {
-    path: '/',
-    name: 'Login',
-    component: () => import('@/pages/login/Login.vue'), // 注意这里要带上 文件后缀.vue
-  },
+    {
+        path: '/',
+        name: 'Login',
+        component: () => import('@/pages/login/Login.vue'), // 注意这里要带上 文件后缀.vue
+    },
 ]
 
 const router = createRouter({
-  history: createWebHistory(),
-  routes,
+    history: createWebHistory(),
+    routes,
 })
 
 export default router
-
 ```
 
 修改入口文件 `mian.ts` :
@@ -558,7 +556,6 @@ const app = createApp(App)
 app.use(router)
 
 app.mount('#app')
-
 ```
 
 到这里路由的基础配置已经完成了,更多配置信息可以查看 `vue-router` 官方文档:
@@ -567,15 +564,15 @@ app.mount('#app')
 
 `vue-router4.x` 支持 `typescript`，配置路由的类型是 `RouteRecordRaw`，这里 `meta` 可以让我们有更多的发挥空间，这里提供一些参考：
 
-- `title`:`string`; 页面标题，通常必选。
-- `icon?`:`string`; 图标，一般配合菜单使用。
-- `auth?`:`boolean`; 是否需要登录权限。
-- `ignoreAuth?`:`boolean`; 是否忽略权限。
-- `roles?`:`RoleEnum[]`; 可以访问的角色
-- `keepAlive?`:`boolean`; 是否开启页面缓存
-- `hideMenu?`:`boolean`; 有些路由我们并不想在菜单中显示，比如某些编辑页面。
-- `order?`:`number`; 菜单排序。
-- `frameUrl?`:`string`; 嵌套外链。
+-   `title`:`string`; 页面标题，通常必选。
+-   `icon?`:`string`; 图标，一般配合菜单使用。
+-   `auth?`:`boolean`; 是否需要登录权限。
+-   `ignoreAuth?`:`boolean`; 是否忽略权限。
+-   `roles?`:`RoleEnum[]`; 可以访问的角色
+-   `keepAlive?`:`boolean`; 是否开启页面缓存
+-   `hideMenu?`:`boolean`; 有些路由我们并不想在菜单中显示，比如某些编辑页面。
+-   `order?`:`number`; 菜单排序。
+-   `frameUrl?`:`string`; 嵌套外链。
 
 > 这里只提供一些思路，每个项目涉及到的业务都会存在些差异，这里就不作详细讲解了，根据自己业务需求做配置即可。
 
@@ -718,10 +715,9 @@ import http from '@/service/http'
 import * as T from './types'
 
 const loginApi: T.ILoginApi = {
-    login(params){
+    login(params) {
         return http.post('/login', params)
-    }
-
+    },
 }
 export default loginApi
 ```
@@ -734,7 +730,7 @@ export interface ILoginParams {
     passWord: string | number
 }
 export interface ILoginApi {
-    login: (params: ILoginParams)=> Promise<any>
+    login: (params: ILoginParams) => Promise<any>
 }
 ```
 
@@ -742,17 +738,17 @@ export interface ILoginApi {
 
 除了自己手动封装 axios ,这里还推荐一个 vue3 的请求库: `VueRequest`,非常好用,下面来看看 `VueRequest`有哪些比较好用的功能吧!!!
 
-- 🚀 所有数据都具有响应式
-- 🔄 轮询请求
-- 🤖 自动处理错误重试
-- 🗄 内置请求缓存
-- 💧 节流请求与防抖请求
-- 🎯 聚焦页面时自动重新请求
-- ⚙️ 强大的分页扩展以及加载更多扩展
-- 📠 完全使用 Typescript 编写，具有强大的类型提示
-- ⚡️ 兼容 Vite
-- 🍃 轻量化
-- 📦 开箱即用
+-   🚀 所有数据都具有响应式
+-   🔄 轮询请求
+-   🤖 自动处理错误重试
+-   🗄 内置请求缓存
+-   💧 节流请求与防抖请求
+-   🎯 聚焦页面时自动重新请求
+-   ⚙️ 强大的分页扩展以及加载更多扩展
+-   📠 完全使用 Typescript 编写，具有强大的类型提示
+-   ⚡️ 兼容 Vite
+-   🍃 轻量化
+-   📦 开箱即用
 
 ![](https://files.mdnice.com/user/16854/c587ba05-5a22-4024-a831-6fecffee5d20.png)
 
@@ -770,10 +766,10 @@ export interface ILoginApi {
 
 Pinia 与 Vuex 的区别：
 
-- `id` 是必要的，它将所使用 store 连接到 devtools。
-- 创建方式：`new Vuex.Store(...)`(vuex3)，`createStore(...)`(vuex4)。
-- 对比于 vuex3 ，state 现在是一个`函数返回对象`。
-- 没有 `mutations`，不用担心，state 的变化依然记录在 devtools 中。
+-   `id` 是必要的，它将所使用 store 连接到 devtools。
+-   创建方式：`new Vuex.Store(...)`(vuex3)，`createStore(...)`(vuex4)。
+-   对比于 vuex3 ，state 现在是一个`函数返回对象`。
+-   没有 `mutations`，不用担心，state 的变化依然记录在 devtools 中。
 
 ```bash
 # 安装
@@ -797,10 +793,10 @@ app.use(createPinia())
 import { defineStore } from 'pinia'
 
 export const useMainStore = defineStore({
-  id: 'mian',
-  state: () =>({
-    name: '超级管理员'
-  })
+    id: 'mian',
+    state: () => ({
+        name: '超级管理员',
+    }),
 })
 ```
 
@@ -829,14 +825,14 @@ const mainStore = useMainStore()
 import { defineStore } from 'pinia'
 
 export const useMainStore = defineStore({
-  id: 'mian',
-  state: () => ({
-    name: '超级管理员',
-  }),
-  // getters
-  getters: {
-    nameLength: (state) => state.name.length,
-  }
+    id: 'mian',
+    state: () => ({
+        name: '超级管理员',
+    }),
+    // getters
+    getters: {
+        nameLength: (state) => state.name.length,
+    },
 })
 ```
 
@@ -871,34 +867,33 @@ const updateName = ()=>{
 
 `Pinia` 让 `Actions` 更加的灵活：
 
-- 可以通过组件或其他 `action` 调用
-- 可以从其他 `store` 的 `action` 中调用
-- 直接在 `store` 实例上调用
-- 支持`同步`或`异步`
-- 有任意数量的参数
-- 可以包含有关如何更改状态的逻辑（也就是 vuex 的 mutations 的作用）
-- 可以 `$patch` 方法直接更改状态属性
+-   可以通过组件或其他 `action` 调用
+-   可以从其他 `store` 的 `action` 中调用
+-   直接在 `store` 实例上调用
+-   支持`同步`或`异步`
+-   有任意数量的参数
+-   可以包含有关如何更改状态的逻辑（也就是 vuex 的 mutations 的作用）
+-   可以 `$patch` 方法直接更改状态属性
 
 ```ts
 import { defineStore } from 'pinia'
 
 export const useMainStore = defineStore({
-  id: 'mian',
-  state: () => ({
-    name: '超级管理员',
-  }),
-  getters: {
-    nameLength: (state) => state.name.length,
-  },
-  actions: {
-    async insertPost(data:string){
-      // 可以做异步
-      // await doAjaxRequest(data);
-      this.name = data;
-    }
-  },
+    id: 'mian',
+    state: () => ({
+        name: '超级管理员',
+    }),
+    getters: {
+        nameLength: (state) => state.name.length,
+    },
+    actions: {
+        async insertPost(data: string) {
+            // 可以做异步
+            // await doAjaxRequest(data);
+            this.name = data
+        },
+    },
 })
-
 ```
 
 ## 环境变量配置
@@ -940,10 +935,10 @@ console.log(import.meta.env.VITE_APP_WEB_URL)
 
 > 组件库选择，这里我们选择 `Naive UI` 至于为什么选择它？我可以直接说`尤大大`推荐的吗？
 
-- 官方介绍：
-  - 一个 `Vue 3` 组件库
-  - 比较完整，`主题可调`，使用 `TypeScript`，不算太慢
-  - 有点意思
+-   官方介绍：
+    -   一个 `Vue 3` 组件库
+    -   比较完整，`主题可调`，使用 `TypeScript`，不算太慢
+    -   有点意思
 
 介绍还是比较谦虚的，既然`尤大`推荐，肯定有它的优势了!!!
 
@@ -959,8 +954,8 @@ yarn add vfonts
 ### 如何使用
 
 ```js
-import { NButton } from "naive-ui"
-<n-button>naive-ui</n-button>
+import { NButton } from 'naive-ui'
+;<n-button>naive-ui</n-button>
 ```
 
 ### 全局配置 Config Provider
@@ -1044,63 +1039,62 @@ import viteCompression from 'vite-plugin-compression'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: './', //打包路径
-  plugins: [
-    vue(),
-    // gzip压缩 生产环境生成 .gz 文件
-    viteCompression({
-      verbose: true,
-      disable: false,
-      threshold: 10240,
-      algorithm: 'gzip',
-      ext: '.gz',
-    }),
-  ],
-  // 配置别名
-  resolve: {
-    alias: {
-      '@': path.resolve(__dirname, 'src'),
+    base: './', //打包路径
+    plugins: [
+        vue(),
+        // gzip压缩 生产环境生成 .gz 文件
+        viteCompression({
+            verbose: true,
+            disable: false,
+            threshold: 10240,
+            algorithm: 'gzip',
+            ext: '.gz',
+        }),
+    ],
+    // 配置别名
+    resolve: {
+        alias: {
+            '@': path.resolve(__dirname, 'src'),
+        },
     },
-  },
-  css:{
-    preprocessorOptions:{
-      scss:{
-        additionalData:'@import "@/assets/style/mian.scss";'
-      }
-    }
-  },
-  //启动服务配置
-  server: {
-    host: '0.0.0.0',
-    port: 8000,
-    open: true,
-    https: false,
-    proxy: {}
-  },
-  // 生产环境打包配置
-  //去除 console debugger
-  build: {
-    terserOptions: {
-      compress: {
-        drop_console: true,
-        drop_debugger: true,
-      },
+    css: {
+        preprocessorOptions: {
+            scss: {
+                additionalData: '@import "@/assets/style/mian.scss";',
+            },
+        },
     },
-  },
+    //启动服务配置
+    server: {
+        host: '0.0.0.0',
+        port: 8000,
+        open: true,
+        https: false,
+        proxy: {},
+    },
+    // 生产环境打包配置
+    //去除 console debugger
+    build: {
+        terserOptions: {
+            compress: {
+                drop_console: true,
+                drop_debugger: true,
+            },
+        },
+    },
 })
-
 ```
 
 ## 常用插件
 
 > 可以查看官方文档：https://vitejs.cn/plugins/
 
-- `@vitejs/plugin-vue` 提供 `Vue 3` 单文件组件支持
-- `@vitejs/plugin-vue-jsx` 提供 Vue 3 `JSX` 支持（通过 专用的 Babel 转换插件）
-- `@vitejs/plugin-legacy` 为打包后的文件提供传统浏览器`兼容性`支持
-- `unplugin-vue-components` 组件的按需自动导入
-- `vite-plugin-compression` 使用 gzip 或者 brotli 来压缩资源
-- .....
+-   `@vitejs/plugin-vue` 提供 `Vue 3` 单文件组件支持
+-   `@vitejs/plugin-vue-jsx` 提供 Vue 3 `JSX` 支持（通过 专用的 Babel 转换插件）
+-   `@vitejs/plugin-legacy` 为打包后的文件提供传统浏览器`兼容性`支持
+-   `unplugin-vue-components` 组件的按需自动导入
+-   `vite-plugin-compression` 使用 gzip 或者 brotli 来压缩资源
+-   .....
 
 ## 非常推荐使用的 hooks 库
 
@@ -1114,9 +1108,9 @@ export default defineConfig({
 
 `VueUse` 是一个基于 `Composition API` 的实用函数集合。通俗的来说，这就是一个`工具函数`包，它可以帮助你快速实现一些常见的功能，免得你自己去写，解决重复的工作内容。以及进行了基于 Composition API 的封装。让你在 vue3 中更加得心应手。
 
-💡想要入手 vue3 的小伙伴，赶快学习起来吧！！！
+💡 想要入手 vue3 的小伙伴，赶快学习起来吧！！！
 
-💡最后给大家奉上仓库地址吧：https://github.com/xushanpei/vite_vue3_ts
+💡 最后给大家奉上仓库地址吧：https://github.com/xushanpei/vite_vue3_ts
 
 ## 写在最后
 
@@ -1128,15 +1122,15 @@ export default defineConfig({
 
 关注公众号后，在首页：
 
-- 回复`面试题`，获取最新大厂面试资料。
-- 回复`简历`，获取 3200 套 简历模板。
-- 回复`React实战`，获取 React 最新实战教程。
-- 回复`Vue实战`，获取 Vue 最新实战教程。
-- 回复`ts`，获取 TypeAcript 精讲课程。
-- 回复`vite`，获取 精讲课程。
-- 回复`uniapp`，获取 uniapp 精讲课程。
-- 回复`js书籍`，获取 js 进阶 必看书籍。
-- 回复`Node`，获取 Nodejs+koa2 实战教程。
-- 回复`数据结构算法`，获取 数据结构算法 教程。
-- 回复`架构师`，获取 架构师学习资源教程。
-- 更多教程资源应用尽有，欢迎`关注获取`
+-   回复`面试题`，获取最新大厂面试资料。
+-   回复`简历`，获取 3200 套 简历模板。
+-   回复`React实战`，获取 React 最新实战教程。
+-   回复`Vue实战`，获取 Vue 最新实战教程。
+-   回复`ts`，获取 TypeAcript 精讲课程。
+-   回复`vite`，获取 精讲课程。
+-   回复`uniapp`，获取 uniapp 精讲课程。
+-   回复`js书籍`，获取 js 进阶 必看书籍。
+-   回复`Node`，获取 Nodejs+koa2 实战教程。
+-   回复`数据结构算法`，获取 数据结构算法 教程。
+-   回复`架构师`，获取 架构师学习资源教程。
+-   更多教程资源应用尽有，欢迎`关注获取`
