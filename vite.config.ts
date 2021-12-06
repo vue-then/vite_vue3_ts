@@ -37,14 +37,13 @@ export default defineConfig({
         port: 8000,
         open: true,
         https: false,
-        proxy: {
-            '/api': {
-                target: 'https://testchatadmin.thenewxt.com',
-                ws: false,
-                changeOrigin: true, //是否跨域
-            },
-        },
-        cors: true
+        //proxy: {
+        //    '/api': {
+        //        target: 'https://www.baidu.com',
+        //        ws: false,
+        //        changeOrigin: true, //是否跨域
+        //    },
+        //},
     },
     // 生产环境打包配置
     //去除 console debugger

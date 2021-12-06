@@ -5,10 +5,9 @@ import { createPinia } from 'pinia'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 import i18n from '@/i18n'
-//配置请求数据
-import {AxiosInstance } from "axios";
-import Axios from "axios";
+
 import api from './service/api/api'
+import DonMessage from '@/components/message'
 
 const app = createApp(App)
 
@@ -23,7 +22,9 @@ app.use(createPinia())
 //      $axios: AxiosInstance;
 //    }
 //}
-app.config.globalProperties.$api= api;  //this.Axios
+app.config.globalProperties.$api= api;  
+app.config.globalProperties.$message = new DonMessage();
+
 
 
 app.mount('#app')

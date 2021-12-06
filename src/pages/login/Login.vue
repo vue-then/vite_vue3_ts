@@ -28,7 +28,7 @@
     import langTool from '@/components/lang/index.vue'
 
     import { reactive, onMounted, ref, Ref, ComponentInternalInstance } from "vue";
-    import { ElForm, ElMessage } from 'element-plus'
+    import { ElForm } from 'element-plus'
     import { User, Lock} from '@element-plus/icons'
 
     import { getCurrentInstance } from 'vue'
@@ -56,21 +56,21 @@
     }
     let submitForm = () => {
       ruleForms?.value?.validate((valid) => {
+        proxy.$message.success(t('success'))
         if (valid) {
             proxy.$api.getLogin(ruleForm).then((res:any) => {
                 if(res.success){
                     Lockr.set("token", res.data);
-                    // this.$message.success(this.$t('success'))
-                    ElMessage.success(t('sucLogin'));
+                    proxy.$message.success(t('sucLogin'));
                     Lockr.set('supc_uname', ruleForms);
                     router.push('/dashboard');
                 }else{
-                    ElMessage.error(res.message)
+                    proxy.$message.error(res.message)
                 }
             })
             
         } else {
-            ElMessage.error(t('p_actpwd'));
+            proxy.$message.error(t('p_actpwd'));
             console.log('error submit!!');
             return false;
         }
