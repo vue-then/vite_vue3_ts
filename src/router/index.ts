@@ -1,10 +1,12 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 
+import Home from '../pages/Home.vue'
+
 const routes: RouteRecordRaw[] = [
     {
         path: '/',
         redirect: {
-            name: 'login',
+            name: 'dashboard',
         },
     },
     {
@@ -13,10 +15,21 @@ const routes: RouteRecordRaw[] = [
         component: () => import('@/pages/login/Login.vue'),
     },
     {
-        path: '/dashboard',
-        name: 'dashboard',
-        component: () => import('@/pages/Dashboard.vue'),
+        path: "/",
+        name: "Home",
+        component: Home,
+        children: [
+            {
+                path: "/dashboard",
+                name: "dashboard",
+                meta: {
+                    title: '系统首页'
+                },
+                component: () => import ( /* webpackChunkName: "dashboard" */ "@/pages/Dashboard.vue")
+            }
+        ]
     },
+    
 ]
 
 const router = createRouter({

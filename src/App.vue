@@ -29,8 +29,9 @@ switch (local){
 
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
     @import url('assets/style/app.scss');
+    @import url('assets/style/color-dark.css');
     #app{
         position: absolute;
         padding: 0;

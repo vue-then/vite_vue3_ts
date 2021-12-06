@@ -43,3 +43,10 @@ axios.defaults.headers = {
     lang: lang,
 }
 
+// 全屏问题
+//https://juejin.cn/post/6987638498555592711
+
+
+
+
+
