@@ -39,11 +39,12 @@ export default defineConfig({
         https: false,
         proxy: {
             '/api': {
-                target: "https://testchatadmin.thenewxt.com",
+                target: 'https://testchatadmin.thenewxt.com',
                 ws: false,
                 changeOrigin: true, //是否跨域
             },
         },
+        cors: true
     },
     // 生产环境打包配置
     //去除 console debugger

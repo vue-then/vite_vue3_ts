@@ -25,10 +25,19 @@
 
 <script setup lang="ts">
     import t from '@/util/remake/tlang';
+    import langTool from '@/components/lang/index.vue'
 
-    import { reactive, onMounted, ref, Ref } from "vue";
-    import type { ElForm } from 'element-plus'
+    import { reactive, onMounted, ref, Ref, ComponentInternalInstance } from "vue";
+    import { ElForm, ElMessage } from 'element-plus'
     import { User, Lock} from '@element-plus/icons'
+
+    import { getCurrentInstance } from 'vue'
+    import router from '@/router';
+    import { Login } from '@/service/api/auth/types';
+
+    //const proxy  = (getCurrentInstance() as ComponentInternalInstance).proxy
+    const { proxy } = getCurrentInstance() as any;
+
     type ElFormInstance = InstanceType<typeof ElForm>
     interface Icallback {
         (message?: string | Error | undefined): Error | void
@@ -36,9 +45,9 @@
     interface Ivalidate {
         (rule: object, value: number|string, callback: Icallback): void
     }
-    let ruleForm = reactive({
+    let ruleForm = reactive<Login>({
         account: 'chatadmin',
-        password: '#123456',
+        password: '#123456'
     })
     const ruleForms = ref<ElFormInstance>()
     let rules = {
@@ -48,17 +57,27 @@
     let submitForm = () => {
       ruleForms?.value?.validate((valid) => {
         if (valid) {
-          alert('submit!')
+            proxy.$api.getLogin(ruleForm).then((res:any) => {
+                if(res.success){
+                    Lockr.set("token", res.data);
+                    // this.$message.success(this.$t('success'))
+                    ElMessage.success(t('sucLogin'));
+                    Lockr.set('supc_uname', ruleForms);
+                    router.push('/dashboard');
+                }else{
+                    ElMessage.error(res.message)
+                }
+            })
+            
         } else {
-          console.log('error submit!!')
-          return false
+            ElMessage.error(t('p_actpwd'));
+            console.log('error submit!!');
+            return false;
         }
       })
     }
-    import langTool from '@/components/lang/index.vue'
-    
 
-    
+    // 
 
     
 </script>
